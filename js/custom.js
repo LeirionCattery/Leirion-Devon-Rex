@@ -341,21 +341,23 @@ $(document).ready(function(){
 		new TweenLite($(this).find(".over"),0.4,{bottom:"-100%", top:"100%"});
 	});
 
-	$('.popup-with-move-anim').magnificPopup({
-		type: 'image',
-
-		fixedContentPos: false,
-		fixedBgPos: true,
-
-		overflowY: 'auto',
-
-		closeBtnInside: true,
-		preloader: false,
-		
-		midClick: true,
-		removalDelay: 400,
-		mainClass: 'my-mfp-slide-bottom'
-	});
+$('.grid').magnificPopup({
+  delegate: 'a.popup-with-move-anim',
+  type: 'image',
+  gallery: {
+    enabled: true,
+    navigateByImgClick: true,
+    preload: [0, 1]
+  },
+  fixedContentPos: false,
+  fixedBgPos: true,
+  overflowY: 'auto',
+  closeBtnInside: true,
+  preloader: false,
+  midClick: true,
+  removalDelay: 300,
+  mainClass: 'mfp-fade'
+});
 
 	/*++++++++++++++++++++++++++++++++++++
 		stellar for contact page backgrounds
@@ -374,10 +376,13 @@ $(window).load(function(){
 	/*++++++++++++++++++++++++++++++++++++
 		gallery masonry layout
 	++++++++++++++++++++++++++++++++++++++*/
-	var $container = $('#grid');
+	var $container = $('#grid, #grid-kings, #grid-queens, #grid-gallery');
 	// initialize
 	$container.masonry({
 	  itemSelector: 'li'
 	});
 	
 });
+
+
+
