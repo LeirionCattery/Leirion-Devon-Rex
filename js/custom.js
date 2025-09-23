@@ -445,6 +445,7 @@ $(document).ready(function() {
     });
 });
 
+
 	/*++++++++++++++++++++++++++++++++++++
 		stellar for contact page backgrounds
 	++++++++++++++++++++++++++++++++++++++*/
