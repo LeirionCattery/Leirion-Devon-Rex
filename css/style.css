@@ -1103,7 +1103,7 @@ ul.grid li a,ul.grid li img {
 /* animate in */
 .my-mfp-slide-bottom.mfp-ready.mfp-bg {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-	filter: alpha(opacity=80);
+	filter: alpha(opacity=60);
 	opacity: 0.8;
 }
 
@@ -1133,8 +1133,8 @@ ul.grid li a,ul.grid li img {
 .icon-huge {
 	font-size: 170px;
 	text-align: center;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
-	filter: alpha(opacity=30);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+	filter: alpha(opacity=20);
 	opacity: 0.3;
 	display: block;
 	padding-top: 30px;
@@ -1177,3 +1177,38 @@ ul.timeline .date {
 }
 
 }
+
+/* Add this CSS to your existing style.css or create a new CSS file */
+
+.custom-gallery-arrows {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-30%);
+  background: rgba(0,0,0,0.4);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 40%;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 9999;
+  display: none;
+}
+
+.custom-gallery-arrows:hover {
+  background: rgba(0,0,0,0.6);
+}
+
+.custom-arrow-left {
+  left: 10px;
+}
+
+.custom-arrow-right {
+  right: 10px;
+}
+
+.mfp-ready .custom-gallery-arrows {
+  display: block;
+}
+

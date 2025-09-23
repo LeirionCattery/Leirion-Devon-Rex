@@ -341,7 +341,8 @@ $(document).ready(function(){
 		new TweenLite($(this).find(".over"),0.4,{bottom:"-100%", top:"100%"});
 	});
 
-$('.grid').magnificPopup({
+// Separate gallery initialization for each section
+$('#grid-kings').magnificPopup({
   delegate: 'a.popup-with-move-anim',
   type: 'image',
   gallery: {
@@ -356,7 +357,92 @@ $('.grid').magnificPopup({
   preloader: false,
   midClick: true,
   removalDelay: 300,
-  mainClass: 'mfp-fade'
+  mainClass: 'my-mfp-slide-bottom'
+});
+
+$('#grid-queens').magnificPopup({
+  delegate: 'a.popup-with-move-anim',
+  type: 'image',
+  gallery: {
+    enabled: true,
+    navigateByImgClick: true,
+    preload: [0, 1]
+  },
+  fixedContentPos: false,
+  fixedBgPos: true,
+  overflowY: 'auto',
+  closeBtnInside: true,
+  preloader: false,
+  midClick: true,
+  removalDelay: 300,
+  mainClass: 'my-mfp-slide-bottom'
+});
+
+$('#grid-gallery').magnificPopup({
+  delegate: 'a.popup-with-move-anim',
+  type: 'image',
+  gallery: {
+    enabled: true,
+    navigateByImgClick: true,
+    preload: [0, 1]
+  },
+  fixedContentPos: false,
+  fixedBgPos: true,
+  overflowY: 'auto',
+  closeBtnInside: true,
+  preloader: false,
+  midClick: true,
+  removalDelay: 300,
+  mainClass: 'my-mfp-slide-bottom'
+});
+
+// Remove or comment out any other .grid magnificPopup configurations
+
+// Create custom navigation arrows
+$('body').append('<button class="custom-gallery-arrows custom-arrow-left">‹</button>');
+$('body').append('<button class="custom-gallery-arrows custom-arrow-right">›</button>');
+
+// Handle arrow clicks
+$('.custom-arrow-left').click(function() {
+  if ($.magnificPopup.instance && $.magnificPopup.instance.isOpen) {
+    $.magnificPopup.instance.prev();
+  }
+});
+
+$('.custom-arrow-right').click(function() {
+  if ($.magnificPopup.instance && $.magnificPopup.instance.isOpen) {
+    $.magnificPopup.instance.next();
+  }
+});
+
+// Keyboard navigation
+$(document).keydown(function(e) {
+  if ($.magnificPopup.instance && $.magnificPopup.instance.isOpen) {
+    if (e.keyCode === 37) $('.custom-arrow-left').click();
+    if (e.keyCode === 39) $('.custom-arrow-right').click();
+  }
+});
+// Enhanced keyboard navigation
+$(document).ready(function() {
+    $(document).on('keydown', function(e) {
+        // Only work when magnificPopup is open
+        if ($('.mfp-ready').length > 0) {
+            switch(e.keyCode) {
+                case 37: // Left arrow
+                    $('.mfp-arrow-left').click();
+                    e.preventDefault();
+                    return false;
+                case 39: // Right arrow
+                    $('.mfp-arrow-right').click();
+                    e.preventDefault();
+                    return false;
+                case 27: // Escape
+                    $.magnificPopup.close();
+                    e.preventDefault();
+                    return false;
+            }
+        }
+    });
 });
 
 	/*++++++++++++++++++++++++++++++++++++
@@ -370,7 +456,13 @@ $('.grid').magnificPopup({
 
 });
 
-
+$(document).keydown(function(e) {
+    if ($.magnificPopup.instance && $.magnificPopup.instance.isOpen) {
+        if (e.keyCode === 37) $.magnificPopup.instance.prev();
+        if (e.keyCode === 39) $.magnificPopup.instance.next();
+        if (e.keyCode === 27) $.magnificPopup.instance.close();
+    }
+});
 $(window).load(function(){
 
 	/*++++++++++++++++++++++++++++++++++++
